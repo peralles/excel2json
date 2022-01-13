@@ -18,14 +18,10 @@ function convertExcelFileToJsonUsingXlsx() {
     const tempData = xlsx.utils.sheet_to_json(file.Sheets[sheetNames[i]]);
     // Skip header row which is the colum names
     tempData.shift();
-    // Add the sheet's json to our data array
-    //parsedData.push(...tempData);
 
     // call a function to save the data in a json file
     generateJSONFile(tempData, sheetNames[i]);
   }
-  // call a function to save the data in a json file
-  //generateJSONFile(parsedData);
 }
 
 function generateJSONFile(data, fileName) {
