@@ -10,8 +10,7 @@ function convertExcelFileToJsonUsingXlsx() {
   // Grab the sheet info from the file
   const sheetNames = file.SheetNames;
   const totalSheets = sheetNames.length;
-  // Variable to store our data
-  //let parsedData = [];
+
   // Loop through sheets
   for (let i = 0; i < totalSheets; i++) {
     // Convert to json using xlsx
