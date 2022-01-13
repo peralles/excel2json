@@ -1,0 +1,27 @@
+{
+  "name": "excel2json",
+  "version": "1.0.0",
+  "description": "API to convert Ecel File in Json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peralles/excel2json.git"
+  },
+  "keywords": [
+    "excel",
+    "json"
+  ],
+  "author": "Daniel Peralles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peralles/excel2json/issues"
+  },
+  "homepage": "https://github.com/peralles/excel2json#readme",
+  "dependencies": {
+    "xlsx": "^0.17.5"
+  }
+}
