@@ -4,13 +4,14 @@ var fs = require("fs");
 function convertExcelFileToJsonUsingXlsx() {
   // Read the file using pathname
   const file = xlsx.readFile(
-    "/Users/peralles/Downloads/dados_publicos_potencial_de_receita_anual.xlsx"
+    "/Users/peralles/Downloads/AO3.2021.Times.Produtos.Servicos (1).xlsx"
   );
+
   // Grab the sheet info from the file
   const sheetNames = file.SheetNames;
   const totalSheets = sheetNames.length;
   // Variable to store our data
-  let parsedData = [];
+  //let parsedData = [];
   // Loop through sheets
   for (let i = 0; i < totalSheets; i++) {
     // Convert to json using xlsx
@@ -18,15 +19,18 @@ function convertExcelFileToJsonUsingXlsx() {
     // Skip header row which is the colum names
     tempData.shift();
     // Add the sheet's json to our data array
-    parsedData.push(...tempData);
+    //parsedData.push(...tempData);
+
+    // call a function to save the data in a json file
+    generateJSONFile(tempData, sheetNames[i]);
   }
   // call a function to save the data in a json file
-  generateJSONFile(parsedData);
+  //generateJSONFile(parsedData);
 }
 
-function generateJSONFile(data) {
+function generateJSONFile(data, fileName) {
   try {
-    fs.writeFileSync("data.json", JSON.stringify(data));
+    fs.writeFileSync("./generated/" + fileName + ".json", JSON.stringify(data));
   } catch (err) {
     console.error(err);
   }
