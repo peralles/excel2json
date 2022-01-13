@@ -1,11 +1,9 @@
 const xlsx = require("xlsx");
 var fs = require("fs");
 
-function convertExcelFileToJsonUsingXlsx() {
+function convertExcelFileToJsonUsingXlsx(filePath) {
   // Read the file using pathname
-  const file = xlsx.readFile(
-    "/Users/peralles/Downloads/AO3.2021.Times.Produtos.Servicos (1).xlsx"
-  );
+  const file = xlsx.readFile(filePath);
 
   // Grab the sheet info from the file
   const sheetNames = file.SheetNames;
@@ -31,4 +29,6 @@ function generateJSONFile(data, fileName) {
   }
 }
 
-convertExcelFileToJsonUsingXlsx();
+convertExcelFileToJsonUsingXlsx(
+  "/Users/peralles/Downloads/AO3.2021.Times.Produtos.Servicos (1).xlsx"
+);
