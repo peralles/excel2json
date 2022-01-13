@@ -1,13 +1,18 @@
 const xlsx = require("xlsx");
 var fs = require("fs");
 
-function convertExcelFileToJsonUsingXlsx(filePath) {
+function convertExcelFileToJson(filePath) {
   // Read the file using pathname
   const file = xlsx.readFile(filePath);
-  readFileXlsxConvert(file);
+  readXlsxAndConvert2Json(file);
 }
 
-function readFileXlsxConvert(xlsxFile) {
+function converExcelFileReaderToJson(fileReader) {
+  const workbook = xlsx.read(fileReader);
+  readXlsxAndConvert2Json(file);
+}
+
+function readXlsxAndConvert2Json(xlsxFile) {
   // Grab the sheet info from the file
   const sheetNames = xlsxFile.SheetNames;
   const totalSheets = sheetNames.length;
@@ -32,6 +37,6 @@ function generateJSONFile(data, fileName) {
   }
 }
 
-convertExcelFileToJsonUsingXlsx(
+convertExcelFileToJson(
   "/Users/peralles/Downloads/AO3.2021.Times.Produtos.Servicos (1).xlsx"
 );
