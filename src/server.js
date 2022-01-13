@@ -4,9 +4,9 @@ fastify.route({
   method: "GET",
   url: "/",
   schema: {
-    // request needs to have a querystring with a `name` parameter
+    // request needs to have a querystring with a `file_name` parameter
     querystring: {
-      name: { type: "string" },
+      file_name: { type: "string" },
     },
     // the response needs to be an object with an `hello` property of type 'string'
     response: {
