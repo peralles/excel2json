@@ -23,6 +23,8 @@
   "homepage": "https://github.com/peralles/excel2json#readme",
   "dependencies": {
     "fastify": "^3.25.3",
+    "fastify-multipart": "^5.2.1",
+    "mongodb": "^4.3.0",
     "xlsx": "^0.17.5"
   }
 }
