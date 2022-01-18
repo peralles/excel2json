@@ -1,5 +1,10 @@
 const fastify = require("fastify")({ logger: true });
-fastify.register(require('fastify-multipart'));
+fastify.register(require('fastify-multipart'), {
+  limits: {
+    fileSize: 1000000,  // For multipart forms, the max file size in bytes
+  }
+});
+
 const service = require("./service/excel2json/index.js");
 
 const types = ["xlsx"]
