@@ -32,10 +32,27 @@ async function readXlsxAndConvert2Json(xlsxFile) {
         // Skip header row which is the colum names
         tempData.shift();
 
+        await removeOnMongoDb(tempData, sheetNames[i])
         // call a function to save the data in a json file
         await saveOnMongoDb(tempData, sheetNames[i])
     }
 }
+
+async function removeOnMongoDb(data, fileName) {
+    try {
+        global.mongo.client = await getMongoClient();
+        const database = global.mongo.client.db("excel2json");
+        const collection = database.collection(fileName);
+        await collection.drop();
+        console.log("sucessos on remove " + fileName)
+    } catch (err) {
+        console.error(err);
+    }
+    finally {
+        await global.mongo.client.close();
+    }
+}
+
 
 async function saveOnMongoDb(data, fileName) {
     try {
