@@ -3,7 +3,7 @@ fastify.register(require('fastify-multipart'));
 const service = require("./service/excel2json/index.js");
 
 const types = ["xlsx"]
-
+const port = process.env.PORT || 3000
 fastify.get("/health", (request, reply) => { return { message: "health" } })
 
 fastify.post("/api/upload", async (request, reply) => {
@@ -47,7 +47,7 @@ function fileIsValid(data, buffer) {
 
 const start = async () => {
   try {
-    await fastify.listen(3000, '0.0.0.0');
+    await fastify.listen(port, '0.0.0.0');
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
