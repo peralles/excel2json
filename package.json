@@ -2,10 +2,10 @@
   "name": "excel2json",
   "version": "1.0.0",
   "description": "API to convert Ecel File in Json",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/index.js"
+    "start": "node ./src/server.js"
   },
   "repository": {
     "type": "git",
