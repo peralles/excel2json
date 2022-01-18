@@ -11,7 +11,6 @@ const types = ["xlsx"]
 const port = process.env.PORT || 3000
 fastify.get("/health", (request, reply) => { return { message: "health" } })
 
-fastify.get("/health", (request, reply) => { return { message: "health" } })
 
 fastify.post("/api/upload", async (request, reply) => {
   const data = await request.file()
