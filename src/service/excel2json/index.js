@@ -3,7 +3,7 @@ var fs = require("fs");
 const mongo_client = require("mongodb").MongoClient;
 global.mongo = global.mongo || {};
 
-const uri = process.env.MONGODB_URI || "mongodb://root:MongoDB!@localhost:27017";
+const uri = process.env.MONGODB_URI || "mongodb+srv://excel2json:KJ!EIWJ22@cluster0.as4ke.mongodb.net/teste?retryWrites=true&w=majority&readPreference=primary";
 
 
 async function convertExcelFileToJson(fileStream) {
@@ -35,6 +35,17 @@ async function readXlsxAndConvert2Json(xlsxFile) {
         await removeOnMongoDb(tempData, sheetNames[i])
         // call a function to save the data in a json file
         await saveOnMongoDb(tempData, sheetNames[i])
+    }
+}
+
+async function saveObjectList(data, databaseName) {
+    try {
+        await removeOnMongoDb(data, databaseName)
+        await saveOnMongoDb(data, databaseName)
+        return true
+    } catch (err) {
+        console.error(err);
+        return false;
     }
 }
 
@@ -78,3 +89,4 @@ async function getMongoClient() {
 }
 
 module.exports.convertExcelFileToJson = convertExcelFileToJson;
+module.exports.saveObjectList = saveObjectList;

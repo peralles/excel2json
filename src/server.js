@@ -11,6 +11,30 @@ const types = ["xlsx"]
 const port = process.env.PORT || 3000
 fastify.get("/health", (request, reply) => { return { message: "health" } })
 
+const opts = {
+  schema: {
+    querystring: {
+      database: { type: 'string' }
+    }
+  }
+}
+
+fastify.post("/api/load", opts, async (request, reply) => {
+  const database = request.query["database"]
+  const list = request.body
+  if (database.length < 1)
+    return { message: "Error database params is required" }
+  if (list.length < 1)
+    return { message: "Error json list is required" }
+
+  var success = await service.saveObjectList(list, database)
+
+  return success
+    ?
+    { message: "Success on processing json list" }
+    :
+    { message: "Error on processing json list!" }
+})
 
 fastify.post("/api/upload", async (request, reply) => {
   const data = await request.file()
