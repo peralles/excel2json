@@ -3,7 +3,7 @@ var fs = require("fs");
 const mongo_client = require("mongodb").MongoClient;
 global.mongo = global.mongo || {};
 
-const uri = process.env.MONGODB_URI || "mongodb+srv://excel2json:KJ!EIWJ22@cluster0.as4ke.mongodb.net/teste?retryWrites=true&w=majority&readPreference=primary";
+const uri = process.env.MONGODB_URI || "mongodb://root:MongoDB!@localhost:27017";
 
 
 async function convertExcelFileToJson(fileStream) {
